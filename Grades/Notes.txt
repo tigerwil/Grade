@@ -1,0 +1,121 @@
+Object-Oriented Programming
+---------------------------
+In the next demo we will look at Object-Oriented Programming (Encapsulation, Inheritance and Polymorphism)
+
+   
+============================================================== Encapsulation ============================================================== 
+Probably the most important one of the 3 pillars, in your day-to-day programming
+	1. Encapsulation
+	2. Inheritance
+	3. Polymorphism
+
+Encapsulation helps us hide complexity, prevents access to implementation details.
+Abstraction and encapsulation are related features in OOP.
+	Abstraction:  allows making relevant information visible
+	Encapsulation:  enables a programmer to implement the desired level of abstraction
+
+Encapulation is implemented by using access modifiers (Public, Private, Protected, Internal, Protected Internal
+	Public
+	------
+	Public access allows a class to expose its member variables and member functions to other functions and objects. 
+	Any public member can be accessed from outside the class.
+
+	Private
+	-------
+	Private access allows a class to hide its member variables and member functions from other functions and objects. 
+	Only functions of the same class can access its private members. 
+	Even an instance of a class cannot access its private members.
+
+	Protected
+	---------
+	Protected access allows a child class to access the member variables and member functions of its base class. 
+	This way it helps in implementing inheritance. 
+
+	Internal
+	--------
+	Internal access allows a class to expose its member variables and member functions to other functions and objects in the current assembly. 
+	In other words, any member with internal access specifier can be accessed from any class or method defined within the application 
+        in which the member is defined.	
+
+	Protected Internal
+	------------------
+	The protected internal access allows a class to hide its member variables and member functions from other class objects and functions, 
+	except a child class within the same application. 
+	This is also used while implementing inheritance.
+
+================================================================Inheritance =======================================================================
+One of the most important concepts in object-oriented programming is inheritance. 
+Inheritance allows us to define a class in terms of another class, which makes it easier to create and maintain an application. 
+This also provides an opportunity to reuse the code functionality and speeds up implementation time.
+
+When creating a class, instead of writing completely new data members and member functions, the programmer can designate 
+that the new class should inherit the members of an existing class. 
+
+This existing class is called the base class, and the new class is referred to as the derived class.
+
+The idea of inheritance implements the IS-A relationship. 
+For example, mammal IS A animal, dog IS-A mammal hence dog IS-A animal as well, and so on.
+
+public class NameChangedEventArgs :  EventArgs
+{
+
+}
+
+////////////////////////////////////////////////
+public class A
+{
+	public void DoWork()
+	{
+
+	}	
+	
+}
+
+//Derived Class
+public class B : A  //Will inherent all members from A
+{
+
+}
+
+public class C : B //Will inherent all members from B and A
+{
+
+}
+
+Demo:  Grades - Occasionally users may want a Gradebook that can throw away the lowest grade before computing statistics
+
+- We want to minimize copy and pasting code and reuse our code, let's use inheritance to solve this problem
+
+
+================================================================= Polymorphism ============================================================================ 
+Polymorphism == "many shapes"
+- Concept of many (poly) shapes (morph)
+- One variable can point to different types of objects
+- Objects can behave differently depending on their type
+
+public class A : Object //System.Object is the ultimate base class for anything and everything.  Everything in .NET ultimately derives from System.Objects
+{                       //We could leave the colon between A and Object out
+
+	public virtual void DoWork()
+	{
+		//virtual will force the C# compiler to invoke that method by looking at the type of object it's working against at runtime, unlike 
+                //function overloading or method overloading where the compiler will look at the type of variable.
+		//the virtual keyword is what gives us polymorphism
+	}	
+	
+}
+
+//Derived Class
+public class B : A 
+{
+	public override void DoWork() //Classes that derive from class A can override the DoWork method to make it behave differently
+	{
+		//optionall call into base...
+		base.DoWork();
+	}		
+
+}
+
+
+
+
