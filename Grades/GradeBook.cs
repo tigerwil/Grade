@@ -19,47 +19,51 @@ namespace Grades
         //public String Name { get; set; }
 
         //Property  with explicit getter and setter
-        private string _name;
+        //private string _name;
+        public string Name { get; set; }
 
-        public string Name
-        {
-            get
-            {
-                return _name;
-            }
-            set
-            {
-                //check for null or empty
-                if (!String.IsNullOrEmpty(value))
-                {
-                    //mwilliams:  added exception
-                    //use the throw to raise an exception
-                    //Exceptions providde type safe and structured error handling
-                    throw new ArgumentException("Name cannot be null or empty");
+        
 
-                }
-                    //delegates:  detect when name has changed
-                    if (_name != value && NameChanged !=null)
-                    {
-                        //Create an instance of the NameChangedEventArgs class
-                        NameChangedEventArgs args = new NameChangedEventArgs();
-                        //equal to the value we currently have in _name
-                        args.existingName = _name;
-                        args.newName = value; //equal to the incoming value
+        //public string Name
+        //{
+        //    get
+        //    {
+        //        return _name;
+        //    }
+        //    set
+        //    {
+        //        //check for null or empty
+        //        if (String.IsNullOrEmpty(value))
+        //        {
+        //            //mwilliams:  added exception
+        //            //use the throw to raise an exception
+        //            //Exceptions providde type safe and structured error handling
+        //            throw new ArgumentException("Name cannot be null or empty");
 
-                        NameChanged(this, args);//implicit variable this
-                        //pass myself to the NameChanged event
+        //        }
+        //            //delegates:  detect when name has changed
+        //            if (_name != value && NameChanged!=null)
+        //            {
+        //                //Create an instance of the NameChangedEventArgs class
+        //                NameChangedEventArgs args = new NameChangedEventArgs();
+        //                //equal to the value we currently have in _name
+        //                args.existingName = _name;
+        //                args.newName = value; //equal to the incoming value
 
-                    }
+        //                NameChanged(this, args);//implicit variable this
+        //                //pass myself to the NameChanged event
 
-                     _name = value;
+        //            }
 
-                
-            }
-        }
+        //             _name = value;
+
+
+        //    }
+        //}
+
 
         //Convert the NameChangedDelagate to NameChanged Event
-        public event NameChangedDelegate NameChanged;
+        //public event NameChangedDelegate NameChanged;
 
 
         //Default Constructor method - without parameters
@@ -67,7 +71,7 @@ namespace Grades
         public GradeBook()
         {
             //Initialize name property
-            _name = "No name yet";
+            //_name = "Empty";
 
             //Initialize grade as a new list of float
             grades = new List<float>();

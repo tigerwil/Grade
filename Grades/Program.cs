@@ -18,7 +18,24 @@ namespace Grades
             AddGrades(book);
             SaveGrades(book);
             WriteResults(book);
+            ViewGrades(book);
 
+        }
+
+        private static void ViewGrades(GradeBook book)
+        {
+            using (StreamReader inputFile =
+                File.OpenText(book.Name + "_grades.txt"))
+            {
+                Console.WriteLine("*******************************");
+                string s = "";
+                while ((s = inputFile.ReadLine()) != null)
+                {
+                    Console.WriteLine(s);//write the current line to screen
+                }
+
+                Console.WriteLine("*******************************");
+            }
         }
 
         private static void WriteResults(GradeBook book)
@@ -26,11 +43,19 @@ namespace Grades
             //Instantiate the GradeStatistics
             GradeStatistics stats  =book.ComputeStatistics();
             WriteResults("Average", stats.AverageGrade);
+            WriteResults("Highest", stats.HighestGrade);
+            WriteResults("Lowest", stats.LowestGrade);
+            WriteResults(stats.Description, stats.LetterGrade);
+        }
+
+        private static void WriteResults(string description, string result)
+        {
+            Console.WriteLine($"{description}: {result}");
         }
 
         private static void WriteResults(string description, float result)
         {
-            Console.WriteLine($"{description}: {result}");
+            Console.WriteLine($"{description}: {result:F2}");
         }
 
         private static void SaveGrades(GradeBook book)
