@@ -12,7 +12,8 @@ namespace Grades
         static void Main(string[] args)
         {
             //Instantiate the Gradebook
-            GradeBook book = new GradeBook();
+            //GradeBook book = new GradeBook();
+            GradeBook book = CreateGradeBook();
 
             GetBookName(book);
             AddGrades(book);
@@ -20,6 +21,11 @@ namespace Grades
             WriteResults(book);
             ViewGrades(book);
 
+        }
+
+        private static ThrowAwayGradeBook CreateGradeBook()
+        {
+            return new ThrowAwayGradeBook();
         }
 
         private static void ViewGrades(GradeBook book)

@@ -9,7 +9,10 @@ namespace Grades
 {
    public class GradeBook
     {
-        private List<float> grades;
+        //private List<float> grades;
+        protected List<float> grades;
+        //Protected access allows a child class to access the 
+        //member variables and member functions of its base class. 
 
         //Field
         //public string Name;
@@ -86,8 +89,16 @@ namespace Grades
         //Create a method to compute grade statistics
         //(lowest, highest and average) scores
         //returns GradeStatistics
-        public GradeStatistics ComputeStatistics()
+        public virtual GradeStatistics ComputeStatistics()
         {
+
+            //virtual keyword is what provides us with polymorphism
+            //This will force the C# compiler to invoke that method at the
+            //type of object it's working against at runtime
+            //Unlike function/method overloading where the compiler will look
+            //at the type of variable
+
+            Console.WriteLine("Gradebook::ComputeStatistics");//debug info
             //Instantiate the GradeStatistics 
             GradeStatistics stats = new GradeStatistics();
 
